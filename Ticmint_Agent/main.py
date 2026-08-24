@@ -31,15 +31,14 @@ async def main():
         # Tool 1: Fetch data (EventProduction is a hub for event organizers)
         reddit_json = await mcp_client.call_tool("fetch_reddit_posts", {"subreddit": "EventProduction", "limit": 25})
         
-        prompt = f"""
-        You are the Growth Lead for Ticmint, a white-label event ticketing platform.
-        Read these Reddit posts. Identify ONLY users who are organizing events AND expressing frustration with their current ticketing platform (e.g., fees, bad UI, lack of control).
+prompt = f"""
+        You are the Growth Lead for Ticmint.
+        Read these Reddit posts. I need to test my system, so just pick ANY 2 recent posts from the data, regardless of what they are talking about.
         
         For each match:
         1. Extract their username and URL.
-        2. Summarize their specific pain point.
-        3. Draft a short, casual DM offering Ticmint as a solution to their specific problem.
-        If no one is complaining, return an empty list.
+        2. For the 'pain_point', just write a 1-sentence summary of what their post is about.
+        3. For 'outreach_draft', just write: "Hey, saw your post about [topic] and wanted to connect!"
         
         Posts Data:
         {reddit_json}
